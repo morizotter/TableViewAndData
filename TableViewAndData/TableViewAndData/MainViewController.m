@@ -51,8 +51,9 @@ static NSString *const kSubtitleCellIdentifier = @"SubtitleCell";
 
 - (void)updateTableView
 {
+    __block __weak MainViewController *blockSelf = self;
     [_mainDataStore fetchWithSuccess:^(NSUInteger count) {
-        [self.contentTableView reloadData];
+        [blockSelf.contentTableView reloadData];
         [_refreshControl endRefreshing];
     } failure:^(NSString *message) {
         UIAlertView *aView = [[UIAlertView alloc] init];
@@ -130,6 +131,7 @@ static NSString *const kSubtitleCellIdentifier = @"SubtitleCell";
 {
     NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
     TWManager *manager = [TWManager sharedInstance];
+    __block __weak MainViewController *blockSelf = self;
     for (ACAccount *account in manager.accountStore.accounts) {
         if ([account.username isEqualToString:buttonTitle]) {
             [manager setIdentifier:account.identifier];
@@ -139,8 +141,8 @@ static NSString *const kSubtitleCellIdentifier = @"SubtitleCell";
             [aView addButtonWithTitle:@"OK"];
             [aView show];
             
-            self.navigationItem.leftBarButtonItem = nil;
-            [self updateTableView];
+            blockSelf.navigationItem.leftBarButtonItem = nil;
+            [blockSelf updateTableView];
         }
     }
 }
