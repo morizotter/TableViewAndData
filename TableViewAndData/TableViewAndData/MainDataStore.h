@@ -17,6 +17,6 @@ typedef void(^MainDataStoreFetchFailureBlock)(NSString *message);
 @interface MainDataStore : NSObject
 @property (strong, nonatomic) NSMutableArray *sectionDataArray;
 
-- (void)fetchWithSuccess:(MainDataStoreFetchSuccessBlock)successBlock
-                 failure:(MainDataStoreFetchFailureBlock)failureBlock;
+- (void)updateWithSuccess:(MainDataStoreFetchSuccessBlock)successBlock
+                  failure:(MainDataStoreFetchFailureBlock)failureBlock;
 @end

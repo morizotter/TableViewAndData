@@ -52,7 +52,7 @@ static NSString *const kSubtitleCellIdentifier = @"SubtitleCell";
 - (void)updateTableView
 {
     __block __weak MainViewController *blockSelf = self;
-    [_mainDataStore fetchWithSuccess:^(NSUInteger count) {
+    [_mainDataStore updateWithSuccess:^(NSUInteger count) {
         [blockSelf.contentTableView reloadData];
         [_refreshControl endRefreshing];
     } failure:^(NSString *message) {

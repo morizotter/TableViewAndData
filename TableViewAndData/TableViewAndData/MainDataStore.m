@@ -14,7 +14,7 @@
 
 @implementation MainDataStore
 
-- (void)fetchWithSuccess:(MainDataStoreFetchSuccessBlock)successBlock failure:(MainDataStoreFetchFailureBlock)failureBlock
+- (void)updateWithSuccess:(MainDataStoreFetchSuccessBlock)successBlock failure:(MainDataStoreFetchFailureBlock)failureBlock
 {
     [[TWManager sharedInstance] timelineWithSuccess:^(NSArray *timeline) {
         
